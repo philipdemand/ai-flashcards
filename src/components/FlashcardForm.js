@@ -29,22 +29,24 @@ const FlashcardForm = ({ addFlashcard }) => {
         { topic }
       );
 
-      const { question: aiQuestion, answer: aiAnswer } = response.data;
+    const cards = response.data;
 
+    cards.forEach((card) => {
       addFlashcard({
-        id: Date.now(),
-        question: aiQuestion,
-        answer: aiAnswer,
+        id: Date.now() + Math.random(),
+        question: card.question,
+        answer: card.answer,
       });
+    });
 
-      setTopic("");
-    } catch (err) {
-      console.error(err);
-      alert("Failed to generate flashcard. Try again.");
-    }
+    setTopic("");
+  } catch (err) {
+    console.error(err);
+    alert("Failed to generate flashcards. Try again.");
+  }
 
-    setLoading(false);
-  };
+  setLoading(false);
+};
 
   return (
     <form onSubmit={handleSubmit} className="mb-4">

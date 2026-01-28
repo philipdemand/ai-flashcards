@@ -33,7 +33,7 @@ export default async function handler(req, res) {
 
     const text = completion.choices[0].message.content;
 
-    // Try to parse the JSON returned by GPT
+   
     const parsed = JSON.parse(text.replace(/```json/g, "").replace(/```/g, "").trim());
 
     res.status(200).json(parsed);

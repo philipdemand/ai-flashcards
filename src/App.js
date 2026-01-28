@@ -13,8 +13,8 @@ function App() {
     localStorage.setItem("flashcards", JSON.stringify(flashcards));
   }, [flashcards]);
 
-  const addFlashcard = (flashcard) => {
-    setFlashcards([flashcard, ...flashcards]);
+  const addFlashcard = (newCard) => {
+    setFlashcards(prev => [...prev, newCard]);
   };
 
   return (

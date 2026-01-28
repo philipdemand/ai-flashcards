@@ -14,26 +14,37 @@ const openai = new OpenAI({
 
 app.post("/api/generate", async (req, res) => {
   const { topic } = req.body;
-  if (!topic) return res.status(400).json({ error: "No topic provided" });
 
   try {
     const completion = await openai.chat.completions.create({
       model: "gpt-4o-mini",
       messages: [
-        { role: "system", content: "You are a teacher creating study flashcards." },
-        { role: "user", content: `Create one flashcard for: "${topic}". Respond in JSON: { "question": "...", "answer": "..." }` },
-      ],
-      temperature: 0.7,
+        {
+          role: "system",
+          content: "You are a helpful assistant that generates study flashcards."
+        },
+        {
+          role: "user",
+          content: `Generate 5 flashcards about "${topic}". 
+Return ONLY valid JSON in this format:
+
+[
+  { "question": "...", "answer": "..." },
+  { "question": "...", "answer": "..." }
+]`
+        }
+      ]
     });
 
     const text = completion.choices[0].message.content;
-    const jsonText = text.match(/\{[\s\S]*\}/)[0];
-    const parsed = JSON.parse(jsonText);
+    console.log("RAW AI RESPONSE:", text);
 
-    res.json(parsed);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Failed to generate flashcard" });
+    const cards = JSON.parse(text);
+    res.json(cards);
+
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to generate cards" });
   }
 });
 

@@ -20,26 +20,31 @@ const FlashcardForm = ({ addFlashcard }) => {
     }
   };
 
-const generateAIFlashcard = async (topic) => {
-  setLoading(true);
-  try {
-    axios.post(`${process.env.REACT_APP_API_URL}/api/generate`, { topic })
+  const generateAIFlashcard = async (topic) => {
+    setLoading(true);
 
-    const { question: aiQuestion, answer: aiAnswer } = response.data;
+    try {
+      const response = await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/generate`,
+        { topic }
+      );
 
-    addFlashcard({
-      id: Date.now(),
-      question: aiQuestion,
-      answer: aiAnswer,
-    });
+      const { question: aiQuestion, answer: aiAnswer } = response.data;
 
-    setTopic("");
-  } catch (err) {
-    console.error(err);
-    alert("Failed to generate flashcard. Try again.");
-  }
-  setLoading(false);
-};
+      addFlashcard({
+        id: Date.now(),
+        question: aiQuestion,
+        answer: aiAnswer,
+      });
+
+      setTopic("");
+    } catch (err) {
+      console.error(err);
+      alert("Failed to generate flashcard. Try again.");
+    }
+
+    setLoading(false);
+  };
 
   return (
     <form onSubmit={handleSubmit} className="mb-4">
@@ -52,6 +57,7 @@ const generateAIFlashcard = async (topic) => {
           onChange={(e) => setTopic(e.target.value)}
         />
       </div>
+
       <div className="mb-2">
         <input
           type="text"
@@ -61,6 +67,7 @@ const generateAIFlashcard = async (topic) => {
           onChange={(e) => setQuestion(e.target.value)}
         />
       </div>
+
       <div className="mb-2">
         <input
           type="text"
@@ -70,6 +77,7 @@ const generateAIFlashcard = async (topic) => {
           onChange={(e) => setAnswer(e.target.value)}
         />
       </div>
+
       <button className="btn btn-primary" disabled={loading} type="submit">
         {loading ? "Generating..." : "Add Flashcard"}
       </button>

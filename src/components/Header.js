@@ -1,4 +1,3 @@
-// src/components/Header.js
 import React from "react";
 
 const Header = () => {
@@ -7,4 +6,4 @@ const Header = () => {
   );
 };
 
-export default Header; // ✅ default export
+export default Header;

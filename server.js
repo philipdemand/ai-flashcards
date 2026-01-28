@@ -27,7 +27,7 @@ app.post("/api/generate", async (req, res) => {
     });
 
     const text = completion.choices[0].message.content;
-    const jsonText = text.match(/\{[\s\S]*\}/)[0]; // grab JSON
+    const jsonText = text.match(/\{[\s\S]*\}/)[0];
     const parsed = JSON.parse(jsonText);
 
     res.json(parsed);

@@ -20,7 +20,7 @@ const Flashcard = ({ flashcard, onDelete }) => {
           variant="danger" 
           size="sm" 
           onClick={(e) => {
-            e.stopPropagation(); // prevent card flip when deleting
+            e.stopPropagation();
             onDelete(flashcard.id);
           }}
         >

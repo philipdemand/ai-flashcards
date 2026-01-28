@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import FlashcardForm from "./components/FlashcardForm";
 import FlashcardList from "./components/FlashcardList";
+import "./App.css";
 
 function App() {
   const [flashcards, setFlashcards] = useState(() => {

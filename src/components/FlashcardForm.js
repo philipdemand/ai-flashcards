@@ -49,7 +49,7 @@ const FlashcardForm = ({ addFlashcard }) => {
 };
 
   return (
-    <form onSubmit={handleSubmit} className="mb-4">
+    <form onSubmit={handleSubmit} className="flashcard-form">
       <div className="mb-2">
         <input
           type="text"
@@ -80,7 +80,7 @@ const FlashcardForm = ({ addFlashcard }) => {
         />
       </div>
 
-      <button className="btn btn-primary" disabled={loading} type="submit">
+      <button className="btn-primary" disabled={loading} type="submit">
         {loading ? "Generating..." : "Add Flashcard"}
       </button>
     </form>

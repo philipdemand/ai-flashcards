@@ -23,10 +23,7 @@ const FlashcardForm = ({ addFlashcard }) => {
 const generateAIFlashcard = async (topic) => {
   setLoading(true);
   try {
-    const response = await axios.post(
-      "http://localhost:3001/api/generate",
-      { topic }
-    );
+    axios.post(`${process.env.REACT_APP_API_URL}/api/generate`, { topic })
 
     const { question: aiQuestion, answer: aiAnswer } = response.data;
 

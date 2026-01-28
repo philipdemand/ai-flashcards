@@ -1,23 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Header from "./components/Header";
+import FlashcardForm from "./components/FlashcardForm";
+import FlashcardList from "./components/FlashcardList";
 
 function App() {
+  const [flashcards, setFlashcards] = useState(() => {
+    const saved = localStorage.getItem("flashcards");
+    return saved ? JSON.parse(saved) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem("flashcards", JSON.stringify(flashcards));
+  }, [flashcards]);
+
+  const addFlashcard = (flashcard) => {
+    setFlashcards([flashcard, ...flashcards]);
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mt-4">
+      <Header />
+      <FlashcardForm addFlashcard={addFlashcard} />
+      <FlashcardList 
+        flashcards={flashcards} 
+        setFlashcards={setFlashcards} 
+      />
     </div>
   );
 }

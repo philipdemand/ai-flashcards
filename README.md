@@ -1,70 +1,140 @@
-# Getting Started with Create React App
+# AI Flashcards
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An AI-powered flashcard web app that helps users study faster by generating high-quality question-and-answer flashcards from any topic. Users can also create their own cards manually, flip cards to review answers, and delete cards as needed.
 
-## Available Scripts
+This project demonstrates full-stack development skills, API integration, and modern React UI patterns.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+* Generate multiple flashcards instantly from a topic using AI
+* Manually add your own custom flashcards
+* Flip cards to reveal answers
+* Delete individual flashcards
+* Clean, responsive UI built with React-Bootstrap
+* Full-stack architecture with a separate frontend and backend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Demo
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `npm run build`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+**Live App:** https://ai-flashcards-mzbm.onrender.com/
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Tech Stack
 
-### `npm run eject`
+### Frontend
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+* React
+* JavaScript (ES6+)
+* React-Bootstrap
+* CSS
+* Axios
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Backend
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* Node.js
+* Express.js
+* OpenAI API
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+### Tools & Deployment
 
-## Learn More
+* Git & GitHub
+* Render (deployment)
+* Environment variables for API key security
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+---
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Installation & Setup
 
-### Code Splitting
+### 1. Clone the repository
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+git clone https://github.com/philipdemand/ai-flashcards.git
+cd ai-flashcards
 
-### Analyzing the Bundle Size
+### 2. Install dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Frontend
 
-### Making a Progressive Web App
+cd client
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Backend
 
-### Advanced Configuration
+cd server
+npm install
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+---
 
-### Deployment
+## Environment Variables
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+Create a `.env` file in your **server** folder and add your OpenAI API key:
 
-### `npm run build` fails to minify
+OPENAI_API_KEY=your_api_key_here
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For the frontend, create a `.env.local` file in the **client** folder:
+
+REACT_APP_API_URL=http://localhost:3001
+
+---
+
+##  Running the App Locally
+
+### Start the backend server
+
+cd server
+node server.js
+
+Server runs on:
+
+http://localhost:3001
+
+### Start the frontend
+
+cd client
+npm start
+
+App runs on:
+
+http://localhost:3000
+
+---
+
+## Example Usage
+
+1. Enter a topic like `Photosynthesis`
+2. Click **Generate**
+3. Receive multiple AI-generated flashcards
+4. Click a card to flip between question and answer
+5. Delete cards as needed
+
+---
+
+## Future Improvements
+
+* Decks and folders for organizing flashcards
+* Spaced repetition study mode
+* User authentication and saved progress
+* Export flashcards to CSV or Anki format
+* Difficulty levels for generated cards
+
+---
+
+## Author
+
+**Philip Demand**
+
+* Portfolio: [https://www.philipdemand.com](https://www.philipdemand.com)
+* LinkedIn: [https://www.linkedin.com/in/philip-demand/](https://www.linkedin.com/in/philip-demand/)
+* GitHub: [https://github.com/philipdemand](https://github.com/philipdemand)
+
+---
+
+## License
+
+This project is open-source and available under the MIT License.
+
